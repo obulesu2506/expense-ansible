@@ -11,7 +11,7 @@
       loop:
       - cryptography
       - PyMySQL
-      
+
     - name: Install MYSQL software i.e., MYSQL service get enabled
       ansible.builtin.package:
         name: mysql-server
@@ -27,7 +27,7 @@
       community.mysql.mysql_info:
         login_user: root
         login_password: " {{ mysql_root_password }}"
-        login_host: 172.31.30.54
+        login_host: 44.220.145.81
       register: mysql_info
       ignore_errors: true
 
