@@ -3,8 +3,15 @@
   become: yes
   vars:
     mysql_root_password: ExpenseApp@1
-
   tasks:
+    - name: Install MYSQL librarues using Python
+      ansible.builtin.pip:
+        name: " {{ item }} "
+        executable: pip3.9
+      loop:
+      - cryptography
+      - PyMySQL
+      
     - name: Install MYSQL software i.e., MYSQL service get enabled
       ansible.builtin.package:
         name: mysql-server
