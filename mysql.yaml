@@ -1,6 +1,9 @@
 - name: Configure MYSQL Server in AWS Linux instance
   hosts: mysql
   become: yes
+  vars:
+    mysql_root-password: ExpenseApp@1
+
   tasks:
     - name: Install MYSQL software i.e., MYSQL service get enabled
       ansible.builtin.package:
@@ -12,6 +15,22 @@
         name: mysqld
         state: started
         enabled: yes
+
+    - name: Connect to MYSQL server
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: " {{ mysql_root_password }}"
+        login_host: 172.31.30.54
+      register: mysql_info
+      ignore_errors: true
+
+
+    - name: print the output
+      ansible.builtin.debug:
+        msg: "MYSQL Info : {{ mysql_info }}"
+
+    
+
 
 
 
