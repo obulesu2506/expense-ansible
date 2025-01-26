@@ -1,5 +1,5 @@
 - name: Configure MYSQL Server in AWS Linux instance
-  hosts: 
+  hosts: mysql
   become: yes
   tasks:
     - name: Install MYSQL software i.e., MYSQL service get enabled
